@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito de Compras - Bros Burger y Lomos</title>
+        <link rel="icon" type="image/jpeg" href="../files/logo_bros.jpeg">
     <link rel="stylesheet" href="../styles/estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -142,123 +143,5 @@
     </footer>
 
     <script src="../javascript/main.js"></script>
-    <script>
-        // Actualizar carrito en la página
-        function actualizarCarrito() {
-            const items = carrito.obtener();
-
-            if (items.length === 0) {
-                document.getElementById('carrito-vacio').style.display = 'block';
-                document.getElementById('carrito-contenido').style.display = 'none';
-                return;
-            }
-
-            document.getElementById('carrito-vacio').style.display = 'none';
-            document.getElementById('carrito-contenido').style.display = 'block';
-
-            // Actualizar tabla
-            const tabla = document.getElementById('tabla-items');
-            tabla.innerHTML = items.map(item => `
-                <tr>
-                    <td>${item.emoji} ${item.nombre}</td>
-                    <td>$${item.precio.toFixed(2)}</td>
-                    <td>
-                        <div class="cantidad">
-                            <button type="button" onclick="disminuirCantidad('${item.id}')" style="width: 30px; padding: 5px; background: #ecf0f1; border: none; cursor: pointer;">-</button>
-                            <input type="number" value="${item.cantidad}" min="1" onchange="carrito.actualizar('${item.id}', parseInt(this.value)); actualizarCarrito();" style="width: 60px; text-align: center;">
-                            <button type="button" onclick="aumentarCantidad('${item.id}')" style="width: 30px; padding: 5px; background: #ecf0f1; border: none; cursor: pointer;">+</button>
-                        </div>
-                    </td>
-                    <td>$${(item.precio * item.cantidad).toFixed(2)}</td>
-                    <td>
-                        <button type="button" class="btn-eliminar" onclick="carrito.eliminar('${item.id}'); actualizarCarrito();">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-            `).join('');
-
-            // Actualizar totales
-            const subtotal = carrito.getTotal();
-            const delivery = document.getElementById('delivery') && document.getElementById('delivery').checked ? 500 : 0;
-            const total = subtotal + delivery;
-            
-            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
-            document.getElementById('envio').textContent = delivery > 0 ? `$${delivery.toFixed(2)}` : 'Retiro en local';
-            document.getElementById('total').textContent = `$${total.toFixed(2)}`;
-        }
-
-        // Funciones de cantidad
-        function aumentarCantidad(id) {
-            const item = carrito.obtener().find(i => i.id === id);
-            if (item) {
-                carrito.actualizar(id, item.cantidad + 1);
-                actualizarCarrito();
-            }
-        }
-
-        function disminuirCantidad(id) {
-            const item = carrito.obtener().find(i => i.id === id);
-            if (item && item.cantidad > 1) {
-                carrito.actualizar(id, item.cantidad - 1);
-                actualizarCarrito();
-            }
-        }
-
-        // Vaciar carrito
-        function vaciarCarrito() {
-            if (confirm('¿Estás seguro de que deseas vaciar el carrito?')) {
-                carrito.vaciar();
-                actualizarCarrito();
-            }
-        }
-
-        // Mostrar formulario
-        function mostrarFormulario() {
-            if (carrito.obtener().length === 0) {
-                mostrarAlerta('⚠️ Tu carrito está vacío', 'error');
-                return;
-            }
-            document.querySelector('.formulario-cliente').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Enviar pedido
-        function enviarPedido(event) {
-            event.preventDefault();
-
-            const cliente = {
-                nombre: document.getElementById('nombre').value,
-                telefono: document.getElementById('telefono').value,
-                email: document.getElementById('email').value,
-                direccion: document.getElementById('direccion').value,
-                delivery: document.getElementById('delivery').checked,
-                notas: document.getElementById('notas').value
-            };
-
-            if (!cliente.nombre || !cliente.telefono) {
-                mostrarAlerta('⚠️ Por favor completa nombre y teléfono', 'error');
-                return;
-            }
-
-            if (carrito.obtener().length === 0) {
-                mostrarAlerta('⚠️ Tu carrito está vacío', 'error');
-                return;
-            }
-
-            // Enviar a WhatsApp
-            enviarPorWhatsApp(cliente);
-
-            // Limpiar formulario y carrito después de enviar
-            setTimeout(() => {
-                carrito.vaciar();
-                document.querySelector('form').reset();
-                actualizarCarrito();
-                mostrarAlerta('✓ Pedido enviado por WhatsApp. ¡Gracias por tu compra!', 'exito');
-            }, 500);
-        }
-
-        // Cargar carrito al iniciar
-        document.addEventListener('DOMContentLoaded', actualizarCarrito);
-    </script>
 </body>
 </html>

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sandwiches - Bros Burger y Lomos</title>
+        <link rel="icon" type="image/jpeg" href="../files/logo_bros.jpeg">
     <link rel="stylesheet" href="../styles/estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -49,67 +50,6 @@
     </footer>
 
     <script src="../javascript/main.js"></script>
-    <script>
-        // Productos de sandwiches (hambur-lomos)
-        const sandwiches = [
-            {
-                id: 'sand1',
-                nombre: 'Hamburlomo',
-                descripcion: 'PAN DE LOMO, MEDALLON DE 240GS, MAYONESA, CASERA, LECHUGA, TOMATE, JAMON, QUESO DAMBO, HUEVO, ACOMPAÑADO DE PAPAS FRITAS',
-                precio: 12500,
-                emoji: '🥖',
-                imagen: '../files/hamburlomo.png'
-            },
-            {
-                id: 'sand2',
-                nombre: 'Sandwich de Milanesa',
-                descripcion: 'PAN DE LOMO, MILANESA DE CARNE, MAYONESA CASERA, LECHUGA, TOMATE, JAMON, QUESO DAMBO, HUEVO Y PAPAS FRITAS',
-                precio: 13000,
-                emoji: '🥖'
-            },
-            {
-                id: 'sand3',
-                nombre: 'Tostado',
-                descripcion: 'PAN DE LOMO, QUESO DAMBO, JAMON Y PAPAS FRITAS',
-                precio: 8000,
-                emoji: '🥖',
-                imagen: '../files/tostado.png'
-            },
-        ];
-
-        // Renderizar productos
-        function renderizarProductos() {
-            const grid = document.getElementById('grid-sandwiches');
-            grid.innerHTML = sandwiches.map(item => {
-                const imagen = item.imagen
-                    ? `<img src="${item.imagen}" alt="${item.nombre}" style="width: 100%; height: 100%; object-fit: cover;">`
-                    : item.emoji;
-
-                return `
-                <div class="producto-card">
-                    <div class="producto-imagen">${imagen}</div>
-                    <div class="producto-info">
-                        <h3>${item.nombre}</h3>
-                        <p class="producto-descripcion">${item.descripcion}</p>
-                        <div class="producto-footer">
-                            <span class="producto-precio">$${item.precio.toFixed(2)}</span>
-                            <button class="btn-agregar" onclick="agregarAlCarrito({
-                                id: '${item.id}',
-                                nombre: '${item.nombre}',
-                                precio: ${item.precio},
-                                emoji: '${item.emoji}'
-                            })">
-                                <i class="fas fa-plus"></i> Agregar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `;
-            }).join('');
-        }
-
-        document.addEventListener('DOMContentLoaded', renderizarProductos);
-    </script>
 </body>
 
 </html>

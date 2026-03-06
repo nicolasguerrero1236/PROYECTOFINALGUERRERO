@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wraps - Bros Burger y Lomos</title>
+        <link rel="icon" type="image/jpeg" href="../files/logo_bros.jpeg">
     <link rel="stylesheet" href="../styles/estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body>
-    <!-- Encabezado -->
     <header class="header">
         <div class="container">
             <div class="logo">
@@ -28,7 +28,6 @@
         </div>
     </header>
 
-    <!-- Sección de productos -->
     <div class="productos-header">
         <div class="container">
             <h1>🌯 Wraps</h1>
@@ -41,85 +40,10 @@
         <div class="grid-productos" id="grid-wraps"></div>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2026 Bros Burger y Lomos. Todos los derechos reservados.</p>
     </footer>
 
     <script src="../javascript/main.js"></script>
-    <script>
-        // Productos wraps
-        const wraps = [
-            {
-                id: 'wrap1',
-                nombre: 'Wrap de Pollo',
-                descripcion: 'Pollo a la parrilla con lechuga, tomate y mayonesa',
-                precio: 6.99,
-                emoji: '🐔'
-            },
-            {
-                id: 'wrap2',
-                nombre: 'Wrap de Lomo',
-                descripcion: 'Lomo tierno con cebolla morada y chimichurri',
-                precio: 7.99,
-                emoji: '🥩'
-            },
-            {
-                id: 'wrap3',
-                nombre: 'Wrap Vegano',
-                descripcion: 'Humus, vegetales frescos y aguacate',
-                precio: 5.99,
-                emoji: '🥬'
-            },
-            {
-                id: 'wrap4',
-                nombre: 'Wrap de Camarón',
-                descripcion: 'Camarones al ajillo con lechuga y salsa tártara',
-                precio: 8.49,
-                emoji: '🦐'
-            },
-            {
-                id: 'wrap5',
-                nombre: 'Wrap Mixto',
-                descripcion: 'Pollo y lomo con queso, lechuga y tomate',
-                precio: 7.49,
-                emoji: '⭐'
-            },
-            {
-                id: 'wrap6',
-                nombre: 'Wrap Picante',
-                descripcion: 'Pollo con jalapeños, queso cheddar y salsa picante',
-                precio: 6.99,
-                emoji: '🌶️'
-            }
-        ];
-
-        // Renderizar productos
-        function renderizarProductos() {
-            const grid = document.getElementById('grid-wraps');
-            grid.innerHTML = wraps.map(wrap => `
-                <div class="producto-card">
-                    <div class="producto-imagen">${wrap.emoji}</div>
-                    <div class="producto-info">
-                        <h3>${wrap.nombre}</h3>
-                        <p class="producto-descripcion">${wrap.descripcion}</p>
-                        <div class="producto-footer">
-                            <span class="producto-precio">$${wrap.precio.toFixed(2)}</span>
-                            <button class="btn-agregar" onclick="agregarAlCarrito({
-                                id: '${wrap.id}',
-                                nombre: '${wrap.nombre}',
-                                precio: ${wrap.precio},
-                                emoji: '${wrap.emoji}'
-                            })">
-                                <i class="fas fa-plus"></i> Agregar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        document.addEventListener('DOMContentLoaded', renderizarProductos);
-    </script>
 </body>
 </html>

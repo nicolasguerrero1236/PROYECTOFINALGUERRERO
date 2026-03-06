@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Papas Fritas - Bros Burger y Lomos</title>
+        <link rel="icon" type="image/jpeg" href="../files/logo_bros.jpeg">
     <link rel="stylesheet" href="../styles/estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -47,67 +48,5 @@
     </footer>
 
     <script src="../javascript/main.js"></script>
-    <script>
-        // Productos papas fritas
-        const papas = [
-            {
-                id: 'papa1',
-                nombre: 'Papas Clásicas',
-                descripcion: 'Papas fritas crujientes con sal',
-                precio: 9000,
-                emoji: '🍟',
-                imagen: '../files/papas_clasicas.png'
-            },
-            {
-                id: 'papa2',
-                nombre: 'Papas con Huevo',
-                descripcion: 'Papas fritas con huevo revuelto',
-                precio: 11000,
-                emoji: '🍟',
-                imagen: '../files/papas_con_huevo.png'
-            },
-            {
-                id: 'papa3',
-                nombre: 'Papas con Cheddar y Bacon',
-                descripcion: 'Papas fritas con queso cheddar y trozos de bacon',
-                precio: 12500,
-                emoji: '🍟',
-                imagen: '../files/papas_con_cheddar.png'
-            }
-        ];
-
-        // Renderizar productos
-        function renderizarProductos() {
-            const grid = document.getElementById('grid-papas');
-            grid.innerHTML = papas.map(papa => {
-                const imagen = papa.imagen
-                    ? `<img src="${papa.imagen}" alt="${papa.nombre}" style="width: 100%; height: 100%; object-fit: cover;">`
-                    : papa.emoji;
-
-                return `
-                <div class="producto-card">
-                    <div class="producto-imagen">${imagen}</div>
-                    <div class="producto-info">
-                        <h3>${papa.nombre}</h3>
-                        <p class="producto-descripcion">${papa.descripcion}</p>
-                        <div class="producto-footer">
-                            <span class="producto-precio">$${papa.precio.toFixed(2)}</span>
-                            <button class="btn-agregar" onclick="agregarAlCarrito({
-                                id: '${papa.id}',
-                                nombre: '${papa.nombre}',
-                                precio: ${papa.precio},
-                                emoji: '${papa.emoji}'
-                            })">
-                                <i class="fas fa-plus"></i> Agregar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `;
-            }).join('');
-        }
-
-        document.addEventListener('DOMContentLoaded', renderizarProductos);
-    </script>
 </body>
 </html>

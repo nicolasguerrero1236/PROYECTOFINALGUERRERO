@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Promos - Bros Burger y Lomos</title>
+        <link rel="icon" type="image/jpeg" href="../files/logo_bros.jpeg">
     <link rel="stylesheet" href="../styles/estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -47,79 +48,5 @@
     </footer>
 
     <script src="../javascript/main.js"></script>
-    <script>
-        // Productos promos
-        const promos = [
-            {
-                id: 'promo1',
-                nombre: 'Combo Hamburguesa + Papas',
-                descripcion: 'Hamburguesa + Papas Fritas + Bebida',
-                precio: 9.99,
-                emoji: '🍔'
-            },
-            {
-                id: 'promo2',
-                nombre: 'Combo Lomo Premium',
-                descripcion: 'Lomo + Papas + Bebida + Postre',
-                precio: 12.99,
-                emoji: '🥩'
-            },
-            {
-                id: 'promo3',
-                nombre: 'Combo Amigos',
-                descripcion: '2 Hamburguesas + 2 Papas + 2 Bebidas',
-                precio: 17.99,
-                emoji: '👨‍👩‍👧'
-            },
-            {
-                id: 'promo4',
-                nombre: 'Combo Familia',
-                descripcion: '4 Hamburguesas + 3 Papas + Bebidas',
-                precio: 24.99,
-                emoji: '👨‍👩‍👧‍👦'
-            },
-            {
-                id: 'promo5',
-                nombre: 'Combo Wrap + Papas',
-                descripcion: 'Wrap + Papas Fritas + Bebida',
-                precio: 10.99,
-                emoji: '🌯'
-            },
-            {
-                id: 'promo6',
-                nombre: 'Combo Vegetariano',
-                descripcion: 'Hamburguesa Vegetariana + Papas + Bebida',
-                precio: 8.99,
-                emoji: '🥬'
-            }
-        ];
-
-        // Renderizar productos
-        function renderizarProductos() {
-            const grid = document.getElementById('grid-promos');
-            grid.innerHTML = promos.map(promo => `
-                <div class="producto-card">
-                    <div class="producto-imagen">${promo.emoji}</div>
-                    <div class="producto-info">
-                        <h3>${promo.nombre}</h3>
-                        <p class="producto-descripcion">${promo.descripcion}</p>
-                        <div class="producto-footer">
-                            <span class="producto-precio">$${promo.precio.toFixed(2)}</span>
-                            <button class="btn-agregar" onclick="agregarAlCarrito({
-                                id: '${promo.id}',
-                                nombre: '${promo.nombre}',
-                                precio: ${promo.precio},
-                                emoji: '${promo.emoji}'
-                            })">
-                                <i class="fas fa-plus"></i> Agregar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        document.addEventListener('DOMContentLoaded', renderizarProductos);
-    </script>
 </body>
 </html>
